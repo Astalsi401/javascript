@@ -8,4 +8,4 @@ function fearNotLetter(str) {
     }
 }
 
-console.log(fearNotLetter("abcdefghijklmnopqrstuvwxyz"));
+console.log(fearNotLetter("abdefghijklmnopqrstuvwxyz"));
