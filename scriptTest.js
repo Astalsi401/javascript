@@ -1,13 +1,9 @@
-function mkques() {
-    let q = '';
-    for (let i = 0; i < 51; i++) {
-        q += '<label>' + i + '：' + '</label>';
-        q += '<label><input value="A" type="radio" name="no' + i + '">A</label>';
-        q += '<label><input value="B" type="radio" name="no' + i + '">B</label>';
-        q += '<label><input value="C" type="radio" name="no' + i + '">C</label>';
-        q += '<label><input value="D" type="radio" name="no' + i + '">D</label>';
-    };
-    console.log(q);
+var dataUrl = 'https://github.com/Astalsi401/Astalsi401.github.io/blob/master/js/json/data.jsonhttps://cloud.culture.tw/frontsite/trans/SearchShowAction.do?method=doFindTypeJ&category=6'
+var XMLHttpRequest = require('xhr2');
+var xhr = new XMLHttpRequest()
+xhr.open('GET', dataUrl, true)
+xhr.send()
+xhr.onload = function () {
+    var data = JSON.parse(this.responseText);
+    console.log(data);
 }
-
-mkques();
