@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="https://i.stack.imgur.com/iYL3x.gif">
+    <img src="https://i.stack.imgur.com/iYL3x.gif">
+    <script>
+        let imgs = Array.from(document.getElementsByTagName('img'))
+        imgs.forEach(img => {
+            img.addEventListener('mouseover', function () {
+                this.src = 'https://i.stack.imgur.com/ht3Jw.gif'
+            })
+            img.addEventListener('mouseout', function () {
+                this.src = 'https://i.stack.imgur.com/lmBrB.gif'
+            })
+        });
+    </script>
+</body>
+</html>

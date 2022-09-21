@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <p id="underline"><u>Hello, my name is Justin, and I have a question</u></p>
+    <script>
+        function selected() {
+            let target = document.getSelection(),
+                range, res
+            if (target.toString() === '') return
+            range = target.getRangeAt(0)
+            console.log(target)
+            if (range.commonAncestorContainer.parentElement.tagName === 'U') {
+                res = range.commonAncestorContainer.parentElement.outerHTML
+            } else {
+                res = range.commonAncestorContainer.innerHTML
+            }
+            let head = res.slice(0, range.startOffset + 3),
+                middle = `</u>${target.toString()}<u>`,
+                tail = res.slice(range.endOffset + 3)
+            range.commonAncestorContainer.parentElement.outerHTML = head + middle + tail
+        }
+        document.onmouseup = selected;
+    </script>
+</body>
+</html>
