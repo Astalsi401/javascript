@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <script>
+        // 在這行下面添加代碼
+
+        const scale = d3.scaleLinear() // 在這裏創建軸
+            .domain([250, 500])
+            .range([10, 150])
+        const output = scale(50); // 調用 scale，傳入一個參數
+
+        // 在這行上面添加代碼
+
+        d3.select("body")
+            .append("h2")
+            .text(output);
+    </script>
+</body>
+</html>

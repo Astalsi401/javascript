@@ -1,0 +1,61 @@
+body {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  background-color: gray;
+}
+
+.main {
+  background-color: white;
+  box-shadow: 0 0 50px 0 black;
+  width: max(300px, 90%);
+  margin: auto;
+}
+
+#title {
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#graph {
+  position: relative;
+}
+
+#tooltip {
+  position: absolute;
+  opacity: 0;
+  width: 150px;
+  height: 50px;
+  background-color: white;
+  transition: opacity 0.2s;
+  border-radius: 2px;
+  box-shadow: 0 0 30px 0 black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  bottom: 100px;
+}
+
+.bar {
+  fill: rgb(0, 0, 128);
+}
+.bar:hover {
+  fill: rgba(0, 0, 128, 0.5);
+}
+
+.tick {
+  opacity: 0.8;
+}
+.tick text {
+  transition: 0.4s;
+}
+
+@media (max-width: 576px) {
+  #x-axis .tick text {
+    rotate: -45deg;
+    translate: -10px 20px;
+  }
+}/*# sourceMappingURL=bar.css.map */

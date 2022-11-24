@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 在這行下面添加代碼
+
+            document.getElementById('getMessage').onclick = function () {
+                fetch('/json/cats.json')
+                    .then(res => res.json())
+                    .then(data => {
+                        document.getElementById('message').innerHTML = JSON.stringify(data)
+                    })
+            }
+            // 在這行上面添加代碼
+        });
+    </script>
+</body>
+</html>

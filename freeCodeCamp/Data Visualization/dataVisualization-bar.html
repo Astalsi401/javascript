@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--<script src="https://d3js.org/d3.v7.min.js"></script>-->
+    <script src="d3_v7.js"></script>
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            background-color: gray;
+        }
+
+        .main {
+            background-color: white;
+            box-shadow: 0 0 50px 0 black;
+            width: max(300px, 90%);
+            margin: auto;
+        }
+
+        #title {
+            font-size: 40px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #graph {
+            position: relative;
+        }
+
+        #tooltip {
+            position: absolute;
+            opacity: 0;
+            width: 150px;
+            height: 50px;
+            background-color: white;
+            transition: opacity 0.2s;
+            border-radius: 2px;
+            box-shadow: 0 0 30px 0 black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            bottom: 100px;
+        }
+
+        .bar {
+            fill: rgb(0, 0, 128);
+        }
+
+        .bar:hover {
+            fill: rgba(0, 0, 128, 0.5);
+        }
+
+        .tick {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div id="title">GDP</div>
+        <div id="graph"></div>
+    </div>
+    <script>
+        const h = 600
+        const padding = 50
+        const parseDate = d3.timeParse('%Y-%m-%d')
+        const format = d3.timeFormat('%Y-%m-%d')
+
+        fetch('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json')
+            .then(res => res.json())
+            .then(data => {
+                const json = data.data.map(d => ({ date: parseDate(d[0]), gdp: d[1] }))
+                    .sort((a, b) => d3.ascending(a.date, b.date))
+                const graph = d3.select("#graph")
+                const svg = graph
+                    .append("svg")
+                    .attr("height", h);
+                const tooltip = graph
+                    .append('div')
+                    .attr('id', 'tooltip')
+                const xScale = d3.scaleTime()
+                    .domain(d3.extent(json, d => d.date))
+                const yScale = d3.scaleLinear()
+                    .domain([0, d3.max(json, d => d.gdp)])
+                    .range([h - padding, padding])
+                const xAxis = svg.append("g")
+                    .attr('id', 'x-axis')
+                    .attr("transform", `translate(0, ${h - padding})`)
+                const yAxis = svg.append("g")
+                    .attr('id', 'y-axis')
+                    .attr("transform", `translate(${padding}, 0)`)
+                const bars = svg.selectAll('rect')
+                    .data(json)
+                    .enter()
+                    .append('rect')
+                    .attr('class', 'bar')
+
+                function drawChart() {
+                    const w = parseInt(d3.select('#graph').style('width'), 10)
+                    const bw = w / json.length
+
+                    xScale.range([padding, w - padding])
+                    svg.attr("width", w)
+
+                    xAxis.call(d3.axisBottom(xScale))
+                        .selectAll('g')
+                        .attr('class', 'tick')
+
+                    yAxis.call(d3.axisLeft(yScale))
+                        .selectAll('g')
+                        .attr('class', 'tick')
+
+                    bars.attr('x', d => xScale(d.date))
+                        .attr('y', d => yScale(d.gdp))
+                        .attr("width", bw)
+                        .attr("height", d => h - padding - yScale(d.gdp))
+                        .attr('data-date', d => d.date)
+                        .attr('data-gdp', d => d.gdp)
+                        .on('mouseover', (event, d) => {
+                            let x = event.layerX
+                            let y = event.layerY
+                            tooltip.classed('active', true)
+                                .html(`${format(d.date)}<br>${d.gdp}`)
+                                .attr('data-date', d.date)
+                                .attr('data-gdp', d.gdp)
+                                .attr('style', `left: ${x + 30}px;`)
+                                .style('opacity', 0.8);
+                        })
+                        .on('mouseout', () => {
+                            tooltip.classed('active', false)
+                                .style('opacity', 0);
+                        })
+                }
+                drawChart()
+                window.addEventListener('resize', drawChart);
+            })
+    </script>
+</body>
+</html>
