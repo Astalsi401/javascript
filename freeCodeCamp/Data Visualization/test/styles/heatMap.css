@@ -22,7 +22,6 @@ body {
 
 #graph {
   position: relative;
-  height: 600px;
 }
 
 #tooltip {
@@ -42,4 +41,43 @@ body {
   z-index: 0;
   display: initial;
   opacity: 0.8;
-}/*# sourceMappingURL=main.css.map */
+}
+
+.main {
+  width: max(600px, 90%);
+}
+
+#description {
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+}
+
+#tooltip {
+  display: none;
+  width: 120px;
+  padding: 10px 15px;
+  font-weight: bold;
+}
+#tooltip.active {
+  display: flex;
+}
+
+.leave:hover {
+  stroke-width: 1px;
+  stroke: black;
+}
+
+.tick {
+  opacity: 0.8;
+}
+.tick text {
+  transition: 0.4s;
+}
+
+@media (max-width: 768px) {
+  #x-axis .tick text {
+    rotate: -45deg;
+    translate: -10px 20px;
+  }
+}/*# sourceMappingURL=heatMap.css.map */

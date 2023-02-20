@@ -1,0 +1,39 @@
+.bg {
+  --bg: #08093cb3;
+}
+.progress-wrapper {
+  --bg: #222;
+  --bdr: 5px;
+  --mb: 20px;
+}
+.progress {
+  --bg: green;
+  --bdr: 5px;
+  width: 0%;
+  height: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+.time {
+  --color: #008c8c;
+  font-size: 1.5em;
+  margin-bottom: 5px;
+}
+.progress span {
+  --color: white;
+  position: relative;
+  top: 13px;
+  left: 25px;
+  font-weight: 800;
+}
+.bg,
+.progress-wrapper,
+.progress {
+  background: var(--bg);
+  border-radius: var(--bdr);
+  margin-bottom: var(--mb);
+}
+.time,
+.progress span {
+  color: var(--color);
+}

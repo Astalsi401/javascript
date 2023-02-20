@@ -1,0 +1,43 @@
+<script src="https://code.jquery.com/jquery-1.11.3.min.js" integrity="sha256-7LkWEzqTdpEfELxcZZlS6wAx5Ff13zZ83lYO2/ujj7g=" crossorigin="anonymous"></script>
+<script src="./test.js" defer></script>
+<div class="modal fade" id="QCPopUpMessageModal" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+        <!-- modal-sm,modal,lg -->
+        <div class="modal-content panel-warning">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
+            </div>
+            <div class="modalBodypop autoflow-scroll">
+                <table class="table table-bordered table-condensed">
+                    <thead>
+                        <tr class="info">
+                            <td>COMMENT</td>
+                            <td>USERNAME</td>
+                            <td>LASTUPDATEDTIMESTAMP</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="warning">
+                            <td>01262023</td>
+                            <td>ek4126</td>
+                            <td>1/26/2023, 11:27:24 AM</td>
+                        </tr>
+                        <tr class="warning">
+                            <td>testing</td>
+                            <td>C7K4KV</td>
+                            <td>2/6/2023, 1:52:54 PM</td>
+                        </tr>
+                        <tr class="info">
+                            <td colspan="1">Enter New Comment</td>
+                            <td><input type="text" id="saveCommentInput" style="width: 100%;"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal" onclick="saveQCcomment(this)">Save</button>
+                <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

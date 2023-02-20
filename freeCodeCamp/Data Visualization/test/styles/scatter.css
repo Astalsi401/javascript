@@ -11,7 +11,6 @@ body {
   box-shadow: 0 0 50px 0 black;
   width: max(300px, 90%);
   margin: auto;
-  padding-top: 20px;
 }
 
 #title {
@@ -42,4 +41,30 @@ body {
   z-index: 0;
   display: initial;
   opacity: 0.8;
-}/*# sourceMappingURL=main.css.map */
+}
+
+#tooltip {
+  width: 220px;
+  height: auto;
+  padding: 10px;
+  text-align: left;
+  font-size: 12px;
+}
+
+.dot {
+  opacity: 0.5;
+}
+
+.tick {
+  opacity: 0.8;
+}
+.tick text {
+  transition: 0.4s;
+}
+
+@media (max-width: 576px) {
+  #x-axis .tick text {
+    rotate: -45deg;
+    translate: -10px 20px;
+  }
+}/*# sourceMappingURL=scatter.css.map */

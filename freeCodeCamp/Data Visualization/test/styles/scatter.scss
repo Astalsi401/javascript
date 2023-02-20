@@ -1,16 +1,15 @@
 @import "./main.scss";
 
 #tooltip {
-  width: 150px;
-  height: 50px;
-  bottom: 100px;
+  width: 220px;
+  height: auto;
+  padding: 10px;
+  text-align: left;
+  font-size: 12px;
 }
 
-.bar {
-  fill: rgb(0, 0, 128);
-  &:hover {
-    fill: rgba(0, 0, 128, 0.5);
-  }
+.dot {
+  opacity: 0.5;
 }
 
 .tick {

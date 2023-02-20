@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js" integrity="sha256-7LkWEzqTdpEfELxcZZlS6wAx5Ff13zZ83lYO2/ujj7g=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <a href="#" class="filter" data-filter="February">February</a>
+    <a href="#" class="filter" data-filter="March">March</a>
+    <script>
+        $("a.filter").on("click", function () {
+            var a = $(this);
+            a.siblings().removeClass('active')
+            a.addClass('active')
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js" integrity="sha256-7LkWEzqTdpEfELxcZZlS6wAx5Ff13zZ83lYO2/ujj7g=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div>
+        <div class="motion"><img src="./c1.jpg"><span class="info">Copacabana</span></div>
+        <div class="motion"><img src="./c2.jpg"><span class="info">Ipanema</span></div>
+        <div class="motion"><img src="./c3.jpg"><span class="info">Florianópolis</span></div>
+        <div class="motion"><img src="./c4.jpg"><span class="info">Jericoacoara</span></div>
+        <div class="motion"><img src="./c5.jpg"><span class="info">Praia da Trindade</span></div>
+        <div class="motion"><img src="./c6.jpg"><span class="info">Porto de Galinhas</span></div>
+        <button class="previous">Previous</button>
+        <button class="next">Next</button>
+    </div>
+    <script>
+        function show(i) {
+            $(`.motion:nth-of-type(${i})`).show()
+            $(`.motion:not(:nth-of-type(${i}))`).hide()
+        }
+
+        let img_num = 1
+        let motion_len = $('.motion').length
+        $(() => {
+            $('.info').hide()
+            show(img_num)
+            $('.motion').on('click', function () {
+                $('.info', this).fadeToggle()
+            })
+            $('button').on('click', function () {
+                $('.info').hide()
+                let btn = $(this).attr('class')
+                if (btn === 'next') {
+                    img_num += 1
+                } else if (btn === 'previous') {
+                    img_num -= 1
+                }
+                img_num = img_num < 1 ? 6 : img_num > 6 ? 1 : img_num
+                show(img_num)
+            })
+
+        })
+    </script>
+</body>
+</html>
